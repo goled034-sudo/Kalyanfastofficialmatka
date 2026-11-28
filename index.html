@@ -4779,59 +4779,61 @@
         }, 20000);
 
         const ALL_GAME_MODES = [
-            { id: "SINGLE DIGIT", label: "Single Ank", badgeType: "single-digit", rate: 10 },
-            { id: "SINGLE DIGIT BULK", label: "Single Ank Bulk", badgeType: "single-digit-bulk", rate: 10 },
-            { id: "JODI", label: "Jodi", badgeType: "jodi", rate: 100 },
-            { id: "JODI BULK", label: "Jodi Bulk", badgeType: "jodi-bulk", rate: 100 },
-            { id: "SINGLE PANA", label: "Single Pana", badgeType: "single-pana", rate: 150 },
-            { id: "SINGLE PANA BULK", label: "Single Pana Bulk", badgeType: "single-pana-bulk", rate: 150 },
-            { id: "DOUBLE PANA", label: "Double Pana", badgeType: "double-pana", rate: 300 },
-            { id: "DOUBLE PANA BULK", label: "Double Pana Bulk", badgeType: "double-pana-bulk", rate: 300 },
-            { id: "TRIPLE PANA", label: "Triple Pana", badgeType: "triple-pana", rate: 900 },
-            { id: "PANA FAMILY", label: "Pana Family", badgeType: "pana-family", rate: 150 },
-            { id: "SP MOTOR", label: "SP Motor", badgeType: "sp-motor", rate: 150 },
-            { id: "DP MOTOR", label: "DP Motor", badgeType: "dp-motor", rate: 300 },
-            { id: "SP DP TP", label: "SP DP TP", badgeType: "sp-dp-tp", rate: 150 },
-            { id: "ODD EVEN", label: "Odd Even", badgeType: "odd-even", rate: 10 },
-            { id: "TWO DIGIT PANA", label: "Two Digit Pana", badgeType: "two-digit-pana", rate: 150 },
-            { id: "JODI FAMILY", label: "Jodi Family", badgeType: "jodi-family", rate: 100 },
-            { id: "RED BRACKET", label: "Red Bracket", badgeType: "red-bracket", rate: 100 },
-            { id: "DIGIT BASED JODI", label: "Digit Based Jodi", badgeType: "digit-based-jodi", rate: 100 },
-            { id: "HALF SANGAM", label: "Half Sangam", badgeType: "half-sangam", rate: 1200 },
-            { id: "FULL SANGAM", label: "Full Sangam", badgeType: "full-sangam", rate: 10000 }
-        ];
+    { id: "SINGLE DIGIT", label: "SINGLE DIGIT", badgeType: "single-digit", rate: 10 },
+    { id: "SINGLE DIGIT BULK", label: "SINGLE DIGIT BULK", badgeType: "single-digit-bulk", rate: 10 },
+    { id: "JODI DIGIT", label: "JODI DIGIT", badgeType: "jodi-digit", rate: 100 },
+    { id: "SINGLE PANA", label: "SINGLE PANA", badgeType: "single-pana", rate: 150 },
+    { id: "SINGLE PANA BULK", label: "SINGLE PANA BULK", badgeType: "single-pana-bulk", rate: 150 },
+    { id: "DOUBLE PANA", label: "DOUBLE PANA", badgeType: "double-pana", rate: 300 },
+    { id: "DOUBLE PANA BULK", label: "DOUBLE PANA BULK", badgeType: "double-pana-bulk", rate: 300 },
+    { id: "TRIPLE PANA", label: "TRIPLE PANA", badgeType: "triple-pana", rate: 900 },
+    { id: "PANA FAMILY", label: "PANA FAMILY", badgeType: "pana-family", rate: 150 },
+    { id: "SP DP TP", label: "SP DP TP", badgeType: "sp-dp-tp", rate: 150 },
+    { id: "DIGIT JODI PANA", label: "DIGIT JODI PANA", badgeType: "digit-jodi-pana", rate: 150 },
+    { id: "SP MOTOR", label: "SP MOTOR", badgeType: "sp-motor", rate: 150 },
+    { id: "DP MOTOR", label: "DP MOTOR", badgeType: "dp-motor", rate: 300 },
+    { id: "JODI FAMILY", label: "JODI FAMILY", badgeType: "jodi-family", rate: 100 },
+    { id: "RED JODI", label: "RED JODI", badgeType: "red-jodi", rate: 100 },
+    { id: "CYCLE JODI", label: "CYCLE JODI", badgeType: "cycle-jodi", rate: 100 },
+    { id: "DIGIT BASED JODI", label: "DIGIT BASED JODI", badgeType: "digit-based-jodi", rate: 100 },
+    { id: "TWO DIGIT PANA", label: "TWO DIGIT PANA", badgeType: "two-digit-pana", rate: 150 },
+    { id: "SP COMMON", label: "SP COMMON", badgeType: "sp-common", rate: 150 },
+    { id: "DP COMMON", label: "DP COMMON", badgeType: "dp-common", rate: 300 },
+    { id: "HALF SANGAM A", label: "HALF SANGAM A", badgeType: "half-sangam-a", rate: 1200 },
+    { id: "HALF SANGAM B", label: "HALF SANGAM B", badgeType: "half-sangam-b", rate: 1200 },
+    { id: "FULL SANGAM", label: "FULL SANGAM", badgeType: "full-sangam", rate: 10000 }
+];
 
-        function renderGameBadgeHtml(type) {
-            const map = {
-                "single-digit": { bg: "#10b981", num: "1", tag: "ANK" },
-                "single-digit-bulk": { bg: "#059669", num: "1+", tag: "BULK" },
-                "jodi": { bg: "#0284c7", num: "12", tag: "JODI" },
-                "jodi-bulk": { bg: "#0369a1", num: "12+", tag: "BULK" },
-                "single-pana": { bg: "#7c3aed", num: "123", tag: "SP" },
-                "single-pana-bulk": { bg: "#6d28d9", num: "SP+", tag: "BULK" },
-                "double-pana": { bg: "#ea580c", num: "112", tag: "DP" },
-                "double-pana-bulk": { bg: "#c2410c", num: "DP+", tag: "BULK" },
-                "triple-pana": { bg: "#e11d48", num: "777", tag: "TP" },
-                "pana-family": { bg: "#0d9488", num: "FAM", tag: "PANA" },
-                "sp-motor": { bg: "#2563eb", num: "SP", tag: "MTR" },
-                "dp-motor": { bg: "#4f46e5", num: "DP", tag: "MTR" },
-                "sp-dp-tp": { bg: "#16a34a", num: "ALL", tag: "3-IN-1" },
-                "odd-even": { bg: "#d97706", num: "O/E", tag: "ANK" },
-                "two-digit-pana": { bg: "#9333ea", num: "2D", tag: "PANA" },
-                "jodi-family": { bg: "#0891b2", num: "FAM", tag: "JODI" },
-                "red-bracket": { bg: "#dc2626", num: "11", tag: "RED" },
-                "digit-based-jodi": { bg: "#65a30d", num: "L/R", tag: "JODI" },
-                "half-sangam": { bg: "#ca8a04", num: "1/2", tag: "SGM" },
-                "full-sangam": { bg: "#be123c", num: "FULL", tag: "SGM" }
-            };
-            const item = map[type] || { bg: "#059669", num: "★", tag: "PLAY" };
-            return `
-                <div class="game-badge" style="background:${item.bg}; color:#ffffff; flex-direction:column;">
-                    <span style="font-size:17px;font-weight:900;line-height:1;">${item.num}</span>
-                    <span style="font-size:9px;font-weight:800;margin-top:2px;opacity:0.95;">${item.tag}</span>
-                </div>
-            `;
-        }
+function renderGameBadgeHtml(type) {
+    const map = {
+        "single-digit": { bg: "radial-gradient(circle at 35% 30%, #f5d061, #c89628 70%, #8e6512)", svg: '<circle cx="19" cy="19" r="5" fill="#ffffff"/>' },
+        "single-digit-bulk": { bg: "radial-gradient(circle at 35% 30%, #c92a3d, #8f1422 72%, #5c0913)", svg: '<circle cx="17" cy="21" r="10" fill="none" stroke="#ffffff" stroke-width="2.2" opacity="0.85"/><circle cx="21" cy="17" r="10" fill="#9d1727" stroke="#ffffff" stroke-width="2.2"/><path d="M16.5 17.5l3 3 5.5-6" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>' },
+        "jodi-digit": { bg: "radial-gradient(circle at 35% 30%, #8b5cf6, #5b21b6 72%, #3b0764)", svg: '<circle cx="13.5" cy="19" r="4.8" fill="#ffffff"/><circle cx="24.5" cy="19" r="4.8" fill="#ffffff"/>' },
+        "single-pana": { bg: "radial-gradient(circle at 35% 30%, #f87171, #dc2626 72%, #7f1d1d)", svg: '<rect x="12.5" y="9" width="13" height="20" rx="2.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><path d="M19 16v6M16 19h6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>' },
+        "single-pana-bulk": { bg: "radial-gradient(circle at 35% 30%, #334155, #1e293b 72%, #0f172a)", svg: '<rect x="12.5" y="9" width="13" height="20" rx="2.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><path d="M19 16v6M16 19h6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>' },
+        "double-pana": { bg: "radial-gradient(circle at 35% 30%, #f472b6, #db2777 72%, #831843)", svg: '<rect x="9.5" y="8.5" width="11.5" height="17" rx="2" fill="none" stroke="#ffffff" stroke-width="2"/><rect x="15.5" y="12.5" width="12.5" height="18" rx="2" fill="#db2777" stroke="#ffffff" stroke-width="2"/><path d="M21.75 18.5v6M18.75 21.5h6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>' },
+        "double-pana-bulk": { bg: "radial-gradient(circle at 35% 30%, #60a5fa, #2563eb 72%, #1e3a8a)", svg: '<rect x="9.5" y="8.5" width="11.5" height="17" rx="2" fill="none" stroke="#ffffff" stroke-width="2"/><rect x="15.5" y="12.5" width="12.5" height="18" rx="2" fill="#2563eb" stroke="#ffffff" stroke-width="2"/><path d="M21.75 18.5v6M18.75 21.5h6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>' },
+        "triple-pana": { bg: "radial-gradient(circle at 35% 30%, #e879f9, #a21caf 72%, #4a044e)", svg: '<g stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"><line x1="19" y1="8.5" x2="19" y2="29.5"/><line x1="8.5" y1="19" x2="29.5" y2="19"/><line x1="11.6" y1="11.6" x2="26.4" y2="26.4"/><line x1="26.4" y1="11.6" x2="11.6" y2="26.4"/></g>' },
+        "pana-family": { bg: "radial-gradient(circle at 35% 30%, #fb923c, #ea580c 72%, #7c2d12)", svg: '<rect x="9.5" y="8.5" width="11.5" height="17" rx="2" fill="none" stroke="#ffffff" stroke-width="2"/><rect x="15.5" y="12.5" width="12.5" height="18" rx="2" fill="#ea580c" stroke="#ffffff" stroke-width="2"/><path d="M21.75 18.5v6M18.75 21.5h6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>' },
+        "sp-dp-tp": { bg: "radial-gradient(circle at 35% 30%, #67e8f9, #0891b2 72%, #164e63)", svg: '<rect x="10" y="20" width="7" height="7" rx="1.2" fill="none" stroke="#ffffff" stroke-width="2"/><rect x="21" y="11" width="7" height="7" rx="1.2" fill="none" stroke="#ffffff" stroke-width="2"/><path d="M13.5 20V14.5H21M17 23.5h7.5V18" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>' },
+        "digit-jodi-pana": { bg: "radial-gradient(circle at 35% 30%, #64748b, #334155 72%, #0f172a)", svg: '<circle cx="13.5" cy="19" r="4.8" fill="#ffffff"/><circle cx="24.5" cy="19" r="4.8" fill="#ffffff"/>' },
+        "sp-motor": { bg: "radial-gradient(circle at 35% 30%, #4ade80, #16a34a 72%, #14532d)", svg: '<circle cx="19" cy="19" r="9.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><circle cx="19" cy="19" r="4.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><line x1="19" y1="9.5" x2="19" y2="14.5" stroke="#ffffff" stroke-width="2"/><line x1="19" y1="23.5" x2="19" y2="28.5" stroke="#ffffff" stroke-width="2"/><line x1="9.5" y1="19" x2="14.5" y2="19" stroke="#ffffff" stroke-width="2"/><line x1="23.5" y1="19" x2="28.5" y2="19" stroke="#ffffff" stroke-width="2"/>' },
+        "dp-motor": { bg: "radial-gradient(circle at 35% 30%, #2dd4bf, #0f766e 72%, #134e4a)", svg: '<circle cx="19" cy="19" r="9.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><circle cx="19" cy="19" r="4.5" fill="none" stroke="#ffffff" stroke-width="2.2"/><line x1="19" y1="9.5" x2="19" y2="14.5" stroke="#ffffff" stroke-width="2"/><line x1="19" y1="23.5" x2="19" y2="28.5" stroke="#ffffff" stroke-width="2"/><line x1="9.5" y1="19" x2="14.5" y2="19" stroke="#ffffff" stroke-width="2"/><line x1="23.5" y1="19" x2="28.5" y2="19" stroke="#ffffff" stroke-width="2"/>' },
+        "jodi-family": { bg: "radial-gradient(circle at 35% 30%, #ef4444, #b91c1c 72%, #450a0a)", svg: '<circle cx="19" cy="19" r="4.8" fill="#ffffff"/>' },
+        "red-jodi": { bg: "radial-gradient(circle at 35% 30%, #f43f5e, #be123c 72%, #4c0519)", svg: '<circle cx="13.5" cy="19" r="4.8" fill="#ffffff"/><circle cx="24.5" cy="19" r="4.8" fill="#ffffff"/>' },
+        "cycle-jodi": { bg: "radial-gradient(circle at 35% 30%, #fb923c, #c2410c 72%, #431407)", svg: '<circle cx="19" cy="19" r="9.5" fill="none" stroke="#ffffff" stroke-width="2.4"/><circle cx="19" cy="19" r="3.8" fill="#ffffff"/>' },
+        "digit-based-jodi": { bg: "radial-gradient(circle at 35% 30%, #991b1b, #5c1212 72%, #290707)", svg: '<circle cx="13.5" cy="19" r="4.8" fill="#ffffff"/><circle cx="24.5" cy="19" r="4.8" fill="#ffffff"/>' },
+        "two-digit-pana": { bg: "radial-gradient(circle at 35% 30%, #e11d48, #9f1239 72%, #4c0519)", svg: '<circle cx="17" cy="21" r="10" fill="none" stroke="#ffffff" stroke-width="2.2" opacity="0.85"/><circle cx="21" cy="17" r="10" fill="#9f1239" stroke="#ffffff" stroke-width="2.2"/><path d="M16.5 17.5l3 3 5.5-6" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>' },
+        "sp-common": { bg: "radial-gradient(circle at 35% 30%, #a16207, #5c3312 72%, #2a1506)", svg: '<polygon points="15,9 20,12 20,18 15,21 10,18 10,12" fill="none" stroke="#ffffff" stroke-width="2"/><polygon points="23,17 28,20 28,26 23,29 18,26 18,20" fill="none" stroke="#ffffff" stroke-width="2"/>' },
+        "dp-common": { bg: "radial-gradient(circle at 35% 30%, #1d4ed8, #1e3a8a 72%, #0f172a)", svg: '<polygon points="15,9 20,12 20,18 15,21 10,18 10,12" fill="none" stroke="#ffffff" stroke-width="2"/><polygon points="23,17 28,20 28,26 23,29 18,26 18,20" fill="none" stroke="#ffffff" stroke-width="2"/>' },
+        "half-sangam-a": { bg: "radial-gradient(circle at 35% 30%, #84cc16, #4d7c0f 72%, #1a2e05)", svg: '<g fill="#ffffff" opacity="0.45"><circle cx="11" cy="11" r="2.6"/><circle cx="19" cy="11" r="2.6"/><circle cx="11" cy="19" r="2.6"/><circle cx="19" cy="19" r="2.6"/><circle cx="11" cy="27" r="2.6"/><circle cx="19" cy="27" r="2.6"/></g><g fill="#ffffff"><circle cx="27" cy="11" r="2.6"/><circle cx="27" cy="19" r="2.6"/><circle cx="27" cy="27" r="2.6"/></g>' },
+        "half-sangam-b": { bg: "radial-gradient(circle at 35% 30%, #22c55e, #15803d 72%, #052e16)", svg: '<g fill="#ffffff" opacity="0.45"><circle cx="11" cy="11" r="2.6"/><circle cx="19" cy="11" r="2.6"/><circle cx="11" cy="19" r="2.6"/><circle cx="19" cy="19" r="2.6"/><circle cx="11" cy="27" r="2.6"/><circle cx="19" cy="27" r="2.6"/></g><g fill="#ffffff"><circle cx="27" cy="11" r="2.6"/><circle cx="27" cy="19" r="2.6"/><circle cx="27" cy="27" r="2.6"/></g>' },
+        "full-sangam": { bg: "radial-gradient(circle at 35% 30%, #d97706, #92400e 72%, #451a03)", svg: '<g fill="#ffffff"><circle cx="11" cy="11" r="2.6"/><circle cx="19" cy="11" r="2.6"/><circle cx="27" cy="11" r="2.6"/><circle cx="11" cy="19" r="2.6"/><circle cx="19" cy="19" r="2.6"/><circle cx="27" cy="19" r="2.6"/><circle cx="11" cy="27" r="2.6"/><circle cx="19" cy="27" r="2.6"/><circle cx="27" cy="27" r="2.6"/></g>' }
+    };
+    const item = map[type] || map["single-digit"];
+    return '<div class="game-badge" style="background:' + item.bg + ';color:#ffffff;width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:inset 0 3px 6px rgba(255,255,255,0.45),inset 0 -4px 8px rgba(0,0,0,0.28),0 4px 10px rgba(0,0,0,0.16);"><svg viewBox="0 0 38 38" width="38" height="38" xmlns="http://www.w3.org/2000/svg">' + item.svg + '</svg></div>';
+}
+
 
         function getModeMeta(modeId) {
             const cleanId = (modeId || "SINGLE DIGIT").toUpperCase();
@@ -4955,19 +4957,18 @@
                     </div>
 
                     <div id="loginBox">
-                        <input type="tel" id="lMob" placeholder="10-Digit Mobile Number" maxlength="10" inputmode="numeric">
-                        <input type="password" id="lPin" placeholder="4-Digit MPIN" maxlength="4" inputmode="numeric">
-                        <button class="btn" onclick="doLogin()">LOGIN NOW</button>
-                        <button type="button" class="btn" style="background:linear-gradient(135deg,#22c55e,#15803d); color:#ffffff; border:1px solid #86efac; margin-top:10px; padding:12px;" onclick="switchAuthTab('reg')">NEW USER? REGISTER HERE</button>
-                    </div>
+    <input type="tel" id="lMob" placeholder="10-Digit Mobile Number" maxlength="10" inputmode="numeric">
+    <button type="button" class="btn" onclick="doLogin()">LOGIN NOW</button>
+    <button type="button" class="btn" style="background:linear-gradient(135deg,#22c55e,#15803d); color:#ffffff; border:1px solid #86efac; margin-top:10px; padding:12px;" onclick="switchAuthTab('reg')">NEW USER? REGISTER HERE</button>
+</div>
 
                     <div id="regBox" style="display:none;">
                         <label style="font-size:12.5px; color:#facc15; font-weight:900;">YOUR FULL NAME *</label>
                         <input type="text" id="rName" placeholder="Enter Full Name">
                         <label style="font-size:12.5px; color:#facc15; font-weight:900;">10-DIGIT MOBILE NUMBER *</label>
                         <input type="tel" id="rMob" placeholder="10-Digit Mobile Number" maxlength="10" inputmode="numeric">
-                        <label style="font-size:12.5px; color:#facc15; font-weight:900;">CREATE 4-DIGIT MPIN *</label>
-                        <input type="password" id="rPin" placeholder="Create 4-Digit MPIN" maxlength="4" inputmode="numeric">
+                        <label style="font-size:12.5px; color:#facc15; font-weight:900;">
+                        <input type="password" id="rPin" placeholder="Cr
                         <button type="button" class="reg-big-btn" onclick="doRegister()">✅ REGISTER NOW</button>
                     </div>
                 </div>
@@ -4997,10 +4998,11 @@
             const mob = document.getElementById('rMob').value.replace(/\D/g, '').trim();
             const pin = document.getElementById('rPin').value.replace(/\D/g, '').trim();
 
-            if (!name || mob.length !== 10 || pin.length !== 4) {
-                showPopup('त्रुटि ⚠️', 'कृपया पूरा नाम, 10 अंकों का मोबाइल नंबर और 4 अंकों का MPIN सही से भरें।', '⚠️');
-                return;
-            }
+            if (!name || mob.length !== 10) {
+    showPopup('त्रुटि ⚠️', 'कृपया पूरा नाम और 10 अंकों का मोबाइल नंबर सही से भरें।', '⚠️');
+    return;
+}
+
             if (usersDB[mob]) {
                 showPopup('अकाउंट मौजूद है', 'यह मोबाइल नंबर पहले से रजिस्टर है। कृपया लॉगिन करें।', 'ℹ️');
                 switchAuthTab('login');
@@ -5526,9 +5528,11 @@ function renderSpecialGridBidArea() {
   const bodyEl = document.getElementById('bidBoardDynamicBody');
   if (!bodyEl) return;
 
-  const rawNums = typeof getBoardNumbersForMode === 'function' ? getBoardNumbersForMode(ctx) : [];
-  const nums = Array.isArray(rawNums) && rawNums.length > 0 ? rawNums : Array.from({ length: 10 }, (_, i) => String(i));
-  const dateLabel = typeof todayStr !== 'undefined' ? todayStr : '';
+  const rawNums = typeof getBoardNumbersForMode === 'function'
+    ? getBoardNumbersForMode(ctx.modeId || ctx.modeLabel || '')
+    : [];
+  const nums = Array.isArray(rawNums) && rawNums.length > 0 ? rawNums : ALL_SINGLE_DIGITS;
+  const dateLabel = typeof getFormattedDailyDate === 'function' ? getFormattedDailyDate() : '';
   const modeTitle = ctx.modeLabel || ctx.modeId || 'BID MODE';
   const marketTitle = ctx.marketName || 'MARKET';
 
@@ -5591,14 +5595,64 @@ function recalcSpecialGridTotals() {
   if (aEl) aEl.innerText = `₹${sum}`;
 }
 
+function addEasyEntriesBatch(items) {
+  if (!Array.isArray(easyAddedEntries)) {
+    easyAddedEntries = [];
+  }
+  items.forEach((item) => {
+    easyAddedEntries.push({
+      number: String(item.number),
+      amount: Number(item.amount)
+    });
+  });
+  refreshEasyChipsUI();
+}
+
 function renderEasyEntryBidArea() {
   const ctx = activeBidBoardContext || {};
   const bodyEl = document.getElementById('bidBoardDynamicBody');
   if (!bodyEl) return;
 
-  const mId = String(ctx.modeId || '').toUpperCase().trim();
-  const dateLabel = typeof todayStr !== 'undefined' ? todayStr : '';
+  const mId = String(ctx.modeId || ctx.modeLabel || '').toUpperCase().trim();
+  const dateLabel = typeof getFormattedDailyDate === 'function' ? getFormattedDailyDate() : '';
   const marketTitle = ctx.marketName || 'MARKET';
+
+  if (mId === 'CYCLE JODI') {
+    bodyEl.innerHTML = `
+      <div class="easy-box-wrap">
+        <div class="easy-helper-note">${marketTitle} • CYCLE JODI${dateLabel ? ` • ${dateLabel}` : ''}</div>
+        <div class="easy-input-line" style="flex-wrap:wrap;gap:8px;">
+          <input type="text" inputmode="numeric" id="cycleOpenAnks" class="easy-num-field" maxlength="10" placeholder="Open Anks (e.g. 123)">
+          <input type="text" inputmode="numeric" id="cycleCloseAnks" class="easy-num-field" maxlength="10" placeholder="Close Anks (e.g. 456)">
+          <input type="number" id="easyAmtInput" class="easy-amt-field" min="10" placeholder="Points">
+          <button type="button" class="easy-plus-btn" onclick="addCycleJodiEntries()">+</button>
+        </div>
+        <div id="easyChipsBox" class="easy-chips-box"></div>
+      </div>
+    `;
+    refreshEasyChipsUI();
+    return;
+  }
+
+  if (mId === 'DIGIT BASED JODI' || mId === 'SP COMMON' || mId === 'DP COMMON') {
+    const digitButtonsHtml = ["1","2","3","4","5","6","7","8","9","0"]
+      .map(d => `<button type="button" class="q-btn" style="padding:10px 6px;font-weight:800;" onclick="addDigitTapEntries('${d}')">${d}</button>`)
+      .join('');
+    bodyEl.innerHTML = `
+      <div class="easy-box-wrap">
+        <div class="easy-helper-note">${marketTitle} • ${ctx.modeLabel || mId}${dateLabel ? ` • ${dateLabel}` : ''}</div>
+        <div class="easy-input-line" style="margin-bottom:10px;">
+          <input type="number" id="easyAmtInput" class="easy-amt-field" style="width:100%;" min="10" placeholder="Enter Points">
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px;">
+          ${digitButtonsHtml}
+        </div>
+        <div id="easyChipsBox" class="easy-chips-box"></div>
+      </div>
+    `;
+    refreshEasyChipsUI();
+    return;
+  }
 
   let inputPlaceholder = 'Enter Number';
   let maxLen = 3;
@@ -5613,22 +5667,22 @@ function renderEasyEntryBidArea() {
         <button type="button" class="q-btn" style="padding:8px;" onclick="addOddEvenPreset('EVEN')">EVEN (0,2,4,6,8)</button>
       </div>
     `;
-  } else if (mId === 'SP DP TP') {
+  } else if (mId === 'SP DP TP' || mId === 'SP . DP . TP') {
     maxLen = 1;
     inputPlaceholder = 'Enter Single Ank (0-9)';
   } else if (mId === 'SP MOTOR' || mId === 'DP MOTOR' || mId === 'MOTOR') {
     maxLen = 10;
-    inputPlaceholder = 'Enter 4 to 8 Digits';
+    inputPlaceholder = mId === 'DP MOTOR' ? 'Enter Digits (Min 3)' : 'Enter Digits (Min 4)';
   } else if (mId === 'PANA FAMILY' || mId === 'FAMILY PANA' || mId === 'CP' || mId === 'CHOICE PANA') {
     maxLen = 3;
     inputPlaceholder = 'Enter 3-Digit Pana';
   } else if (mId === 'JODI FAMILY' || mId === 'FAMILY JODI') {
     maxLen = 2;
     inputPlaceholder = 'Enter 2-Digit Jodi';
-  } else if (mId === 'TWO DIGIT PANA' || mId === '2 DIGIT PANA') {
+  } else if (mId === 'TWO DIGIT PANA' || mId === '2 DIGIT PANA' || mId === 'DIGIT JODI PANA') {
     maxLen = 2;
     inputPlaceholder = 'Enter 2 Digits';
-  } else if (mId === 'RED JODI') {
+  } else if (mId === 'RED JODI' || mId === 'RED BRACKET') {
     maxLen = 1;
     inputPlaceholder = 'Enter 1 Digit (0-9)';
   } else if (mId.includes('JODI') || mId === 'SANGAM' || mId === 'HALF SANGAM' || mId === 'FULL SANGAM') {
@@ -5646,7 +5700,7 @@ function renderEasyEntryBidArea() {
     <div class="easy-box-wrap">
       ${helperBanner}
       <div class="easy-input-line">
-        <input type="number" id="easyNumInput" class="easy-num-field" maxlength="${maxLen}" placeholder="${inputPlaceholder}">
+        <input type="text" inputmode="numeric" id="easyNumInput" class="easy-num-field" maxlength="${maxLen}" placeholder="${inputPlaceholder}">
         <input type="number" id="easyAmtInput" class="easy-amt-field" min="10" placeholder="Points">
         <button type="button" class="easy-plus-btn" onclick="addEasyModeEntry()">+</button>
       </div>
@@ -5654,9 +5708,7 @@ function renderEasyEntryBidArea() {
     </div>
   `;
 
-  if (typeof refreshEasyChipsUI === 'function') {
-    refreshEasyChipsUI();
-  }
+  refreshEasyChipsUI();
 }
 
 function addOddEvenPreset(kind) {
@@ -5667,20 +5719,63 @@ function addOddEvenPreset(kind) {
     return;
   }
   const digits = kind === 'ODD' ? ['1', '3', '5', '7', '9'] : ['0', '2', '4', '6', '8'];
-  if (!Array.isArray(window.easyAddedEntries)) {
-    window.easyAddedEntries = [];
+  addEasyEntriesBatch(digits.map(d => ({ number: d, amount: amt })));
+}
+
+function addCycleJodiEntries() {
+  const openEl = document.getElementById('cycleOpenAnks');
+  const closeEl = document.getElementById('cycleCloseAnks');
+  const amtEl = document.getElementById('easyAmtInput');
+  const openDigits = Array.from(new Set(String(openEl ? openEl.value : '').replace(/\D/g, '').split('')));
+  const closeDigits = Array.from(new Set(String(closeEl ? closeEl.value : '').replace(/\D/g, '').split('')));
+  const amt = amtEl ? parseFloat(amtEl.value) : 0;
+
+  if (!openDigits.length || !closeDigits.length) {
+    alert('कृपया Open Anks और Close Anks डालें');
+    return;
   }
-  digits.forEach((d) => {
-    window.easyAddedEntries.push({ number: d, amount: amt });
-  });
-  if (typeof refreshEasyChipsUI === 'function') {
-    refreshEasyChipsUI();
+  if (!amt || amt < 10) {
+    alert('कृपया कम से कम 10 Points दर्ज करें');
+    return;
   }
+
+  const comboSet = new Set();
+  openDigits.forEach(od => closeDigits.forEach(cd => comboSet.add(`${od}${cd}`)));
+  addEasyEntriesBatch(Array.from(comboSet).map(j => ({ number: j, amount: amt })));
+  if (openEl) openEl.value = '';
+  if (closeEl) closeEl.value = '';
+}
+
+function addDigitTapEntries(digit) {
+  const ctx = activeBidBoardContext || {};
+  const mId = String(ctx.modeId || ctx.modeLabel || '').toUpperCase().trim();
+  const amtEl = document.getElementById('easyAmtInput');
+  const amt = amtEl ? parseFloat(amtEl.value) : 0;
+
+  if (!amt || amt < 10) {
+    alert('कृपया कम से कम 10 Points दर्ज करें');
+    return;
+  }
+
+  let list = [];
+  if (mId === 'DIGIT BASED JODI') {
+    list = ALL_JODIS.filter(j => j.includes(digit));
+  } else if (mId === 'SP COMMON') {
+    list = ALL_SINGLE_PANAS.filter(p => p.includes(digit));
+  } else if (mId === 'DP COMMON') {
+    list = ALL_DOUBLE_PANAS.filter(p => p.includes(digit));
+  }
+
+  if (!list.length) {
+    alert('इस अंक के लिए कोई नंबर नहीं मिला');
+    return;
+  }
+  addEasyEntriesBatch(list.map(n => ({ number: n, amount: amt })));
 }
 
 function addEasyModeEntry() {
   const ctx = activeBidBoardContext || {};
-  const mId = String(ctx.modeId || '').toUpperCase().trim();
+  const mId = String(ctx.modeId || ctx.modeLabel || '').toUpperCase().trim();
   const numEl = document.getElementById('easyNumInput');
   const amtEl = document.getElementById('easyAmtInput');
   const rawNum = numEl ? String(numEl.value || '').trim() : '';
@@ -5693,17 +5788,23 @@ function addEasyModeEntry() {
 
   let generatedNums = [];
 
-  if (mId === 'SP DP TP') {
+  if (mId === 'SP DP TP' || mId === 'SP . DP . TP') {
     if (!/^\d$/.test(rawNum)) {
       alert('0 से 9 के बीच 1 अंक डालें');
       return;
     }
     const tp = `${rawNum}${rawNum}${rawNum}`;
-    const singleList = Array.isArray(window.SINGLE_PANA_LIST) ? window.SINGLE_PANA_LIST.filter((p) => String(p).includes(rawNum)) : [];
-    const doubleList = Array.isArray(window.DOUBLE_PANA_LIST) ? window.DOUBLE_PANA_LIST.filter((p) => String(p).includes(rawNum)) : [];
+    const singleList = ALL_SINGLE_PANAS.filter((p) => String(p).includes(rawNum));
+    const doubleList = ALL_DOUBLE_PANAS.filter((p) => String(p).includes(rawNum));
     generatedNums = [...singleList, ...doubleList, tp];
   } else if (mId === 'SP MOTOR' || mId === 'DP MOTOR' || mId === 'MOTOR') {
-    generatedNums = typeof generateMotorPanas === 'function' ? generateMotorPanas(rawNum) : [rawNum];
+    const isDouble = mId === 'DP MOTOR';
+    const cleanDigits = rawNum.replace(/\D/g, '');
+    if (!isDouble && new Set(cleanDigits.split('')).size < 4) {
+      alert('SP Motor के लिए कम से कम 4 अलग अंक डालें');
+      return;
+    }
+    generatedNums = typeof generateMotorPanas === 'function' ? generateMotorPanas(cleanDigits, isDouble) : [rawNum];
     if (!generatedNums || generatedNums.length === 0) {
       alert('मान्य अंक डालें');
       return;
@@ -5720,22 +5821,18 @@ function addEasyModeEntry() {
       alert('मान्य 2-अंक जोड़ी डालें');
       return;
     }
-  } else if (mId === 'TWO DIGIT PANA' || mId === '2 DIGIT PANA') {
-    generatedNums = typeof generateTwoDigitPana === 'function' ? generateTwoDigitPana(rawNum) : [rawNum];
+  } else if (mId === 'TWO DIGIT PANA' || mId === '2 DIGIT PANA' || mId === 'DIGIT JODI PANA') {
+    generatedNums = typeof generateTwoDigitPanas === 'function' ? generateTwoDigitPanas(rawNum) : [rawNum];
     if (!generatedNums || generatedNums.length === 0) {
       alert('मान्य 2 अंक डालें');
       return;
     }
-  } else if (mId === 'RED JODI') {
+  } else if (mId === 'RED JODI' || mId === 'RED BRACKET') {
     if (!/^\d$/.test(rawNum)) {
       alert('0 से 9 के बीच 1 अंक डालें');
       return;
     }
-    const allJodis = Array.isArray(window.ALL_JODIS) ? window.ALL_JODIS : [];
-    generatedNums = allJodis.filter((j) => {
-      const s = String(j);
-      return s.length === 2 && s[0] === s[1] && s.includes(rawNum);
-    });
+    generatedNums = RED_BRACKET_JODIS.filter((j) => String(j).includes(rawNum));
     if (generatedNums.length === 0) generatedNums = [`${rawNum}${rawNum}`];
   } else if (mId.includes('JODI')) {
     if (!/^\d{2}$/.test(rawNum)) {
@@ -5757,205 +5854,236 @@ function addEasyModeEntry() {
     generatedNums = [rawNum];
   }
 
-  if (!Array.isArray(window.easyAddedEntries)) {
-    window.easyAddedEntries = [];
+  addEasyEntriesBatch(generatedNums.map((n) => ({ number: String(n), amount: amt })));
+  if (numEl) numEl.value = '';
+}
+
+function removeEasyChip(idx) {
+  if (!Array.isArray(easyAddedEntries)) easyAddedEntries = [];
+  easyAddedEntries.splice(idx, 1);
+  refreshEasyChipsUI();
+}
+
+function refreshEasyChipsUI() {
+  if (!Array.isArray(easyAddedEntries)) easyAddedEntries = [];
+  const box = document.getElementById('easyChipsBox');
+  if (!box) return;
+  if (easyAddedEntries.length === 0) {
+    box.innerHTML = `<span style="font-size:13px;color:#cbd5e1;">ऊपर नंबर और Points डालकर <b>+</b> दबाएं।</span>`;
+  } else {
+    box.innerHTML = easyAddedEntries.map((item, idx) => `
+      <span class="easy-chip-item">${item.number} : ₹${item.amount} <b style="cursor:pointer;color:#fda4af;" onclick="removeEasyChip(${idx})">✕</b></span>
+    `).join('');
   }
-  generatedNums.forEach((n) => {
-    window.easyAddedEntries.push({ number: String(n), amount: amt });
+  const totalAmt = easyAddedEntries.reduce((s, x) => s + Number(x.amount || 0), 0);
+  const cEl = document.getElementById('boardTotalBids');
+  const aEl = document.getElementById('boardTotalAmt');
+  if (cEl) cEl.innerText = String(easyAddedEntries.length);
+  if (aEl) aEl.innerText = `₹${totalAmt}`;
+}
+
+function renderSangamBidArea() {
+  const ctx = activeBidBoardContext || {};
+  const mId = String(ctx.modeId || ctx.modeLabel || '').toUpperCase().trim();
+  const isFull = mId.includes('FULL');
+  const bodyEl = document.getElementById('bidBoardDynamicBody');
+  if (!bodyEl) return;
+
+  if (isFull) {
+    bodyEl.innerHTML = `
+      <div class="easy-box-wrap">
+        <div class="easy-input-line" style="gap:8px;margin-bottom:8px;">
+          <input type="text" inputmode="numeric" id="sangamOpenPana" class="easy-num-field" maxlength="3" placeholder="Open Pana">
+          <input type="text" inputmode="numeric" id="sangamClosePana" class="easy-num-field" maxlength="3" placeholder="Close Pana">
+        </div>
+        <div class="easy-input-line">
+          <input type="number" id="sangamAmt" class="easy-amt-field" min="10" placeholder="Enter Points">
+          <button type="button" class="easy-plus-btn" onclick="addSangamEntry(true)">+</button>
+        </div>
+        <div id="easyChipsBox" class="easy-chips-box"></div>
+      </div>
+    `;
+  } else {
+    bodyEl.innerHTML = `
+      <div class="easy-box-wrap">
+        <select id="halfSangamType" class="meta-select-clean" style="width:100%;margin-bottom:8px;">
+          <option value="OPEN_PANA_CLOSE_ANK">Open Pana + Close Ank</option>
+          <option value="CLOSE_PANA_OPEN_ANK">Close Pana + Open Ank</option>
+        </select>
+        <div class="easy-input-line" style="gap:8px;margin-bottom:8px;">
+          <input type="text" inputmode="numeric" id="sangamPana" class="easy-num-field" maxlength="3" placeholder="3-Digit Pana">
+          <input type="text" inputmode="numeric" id="sangamDigit" class="easy-num-field" maxlength="1" placeholder="1-Digit Ank">
+        </div>
+        <div class="easy-input-line">
+          <input type="number" id="sangamAmt" class="easy-amt-field" min="10" placeholder="Enter Points">
+          <button type="button" class="easy-plus-btn" onclick="addSangamEntry(false)">+</button>
+        </div>
+        <div id="easyChipsBox" class="easy-chips-box"></div>
+      </div>
+    `;
+  }
+  refreshEasyChipsUI();
+}
+
+function addSangamEntry(isFull) {
+  const amtEl = document.getElementById('sangamAmt');
+  const amt = amtEl ? parseFloat(amtEl.value) : 0;
+  if (!amt || amt < 10) {
+    alert('कम से कम 10 Points डालें');
+    return;
+  }
+
+  if (!Array.isArray(easyAddedEntries)) easyAddedEntries = [];
+
+  if (isFull) {
+    const opEl = document.getElementById('sangamOpenPana');
+    const cpEl = document.getElementById('sangamClosePana');
+    const op = opEl ? String(opEl.value || '').trim() : '';
+    const cp = cpEl ? String(cpEl.value || '').trim() : '';
+    if (!/^\d{3}$/.test(op) || !/^\d{3}$/.test(cp)) {
+      alert('Open Pana और Close Pana दोनों 3 अंकों के डालें');
+      return;
+    }
+    easyAddedEntries.push({ number: `${op}-${cp}`, amount: amt });
+    if (opEl) opEl.value = '';
+    if (cpEl) cpEl.value = '';
+  } else {
+    const pEl = document.getElementById('sangamPana');
+    const dEl = document.getElementById('sangamDigit');
+    const typeEl = document.getElementById('halfSangamType');
+    const p = pEl ? String(pEl.value || '').trim() : '';
+    const d = dEl ? String(dEl.value || '').trim() : '';
+    const hsType = typeEl ? typeEl.value : 'OPEN_PANA_CLOSE_ANK';
+    if (!/^\d{3}$/.test(p) || !/^\d$/.test(d)) {
+      alert('3 अंकों का पाना और 1 अंक का डिजिट डालें');
+      return;
+    }
+    const combo = hsType === 'CLOSE_PANA_OPEN_ANK' ? `${d}-${p}` : `${p}-${d}`;
+    easyAddedEntries.push({ number: combo, amount: amt });
+    if (pEl) pEl.value = '';
+    if (dEl) dEl.value = '';
+  }
+
+  refreshEasyChipsUI();
+}
+
+function submitSmartBoardBids() {
+  const ctx = activeBidBoardContext;
+  if (!ctx) return;
+
+  const sessionEl = document.getElementById('bidBoardSession');
+  const session = sessionEl ? sessionEl.value : (ctx.defaultSession || 'OPEN');
+
+  if (!session || session === 'CLOSED') {
+    if (typeof showSessionClosedPopup === 'function') {
+      showSessionClosedPopup('CLOSE', () => openSmartBidBoard(ctx));
+    }
+    return;
+  }
+
+  if (ctx.marketIdx !== null && ctx.marketIdx !== undefined && typeof markets !== 'undefined' && markets[ctx.marketIdx]) {
+    const m = markets[ctx.marketIdx];
+    const timerInfo = typeof getMarketBidTimerInfo === 'function' ? getMarketBidTimerInfo(m) : null;
+    if (timerInfo && timerInfo.locked && typeof showSessionClosedPopup === 'function') {
+      showSessionClosedPopup('CLOSE', () => openSmartBidBoard(ctx));
+      return;
+    }
+    if (timerInfo && timerInfo.lockedOpen && session === 'OPEN' && typeof showSessionClosedPopup === 'function') {
+      showSessionClosedPopup('OPEN', () => openSmartBidBoard(ctx));
+      return;
+    }
+    if (timerInfo && timerInfo.lockedOpen && typeof isJodiOrSangamMode === 'function' && isJodiOrSangamMode(ctx.modeId) && typeof showSessionClosedPopup === 'function') {
+      showSessionClosedPopup('OPEN', () => openSmartBidBoard(ctx));
+      return;
+    }
+  }
+
+  let entriesToPlace = [];
+  const isSangam = String(ctx.modeId || '').toUpperCase().includes('SANGAM');
+
+  if (!isSangam && currentBidUiMode === 'SPECIAL') {
+    document.querySelectorAll('.pair-val-input').forEach((inp) => {
+      const v = parseFloat(inp.value);
+      if (v && v > 0) {
+        entriesToPlace.push({ number: String(inp.getAttribute('data-num')), amount: v });
+      }
+    });
+  } else {
+    entriesToPlace = Array.isArray(easyAddedEntries) ? [...easyAddedEntries] : [];
+  }
+
+  if (!entriesToPlace.length) {
+    alert('कृपया कम से कम 1 Bid डालें');
+    return;
+  }
+
+  if (entriesToPlace.some(e => e.amount < 10)) {
+    alert('हर बिड पर न्यूनतम 10 Points (₹10) जरूरी हैं');
+    return;
+  }
+
+  const grandTotal = entriesToPlace.reduce((s, e) => s + Number(e.amount || 0), 0);
+  if (typeof usersDB !== 'undefined' && typeof user !== 'undefined' && usersDB[user]) {
+    if (usersDB[user].wallet < grandTotal) {
+      if (typeof showPopup === 'function') {
+        showPopup('बैलेंस कम है ⚠️', `कुल ₹${grandTotal} की बिड के लिए पर्याप्त बैलेंस नहीं है।`);
+      }
+      return;
+    }
+    usersDB[user].wallet -= grandTotal;
+    if (typeof safeWriteJson === 'function' && typeof sKey === 'function') {
+      safeWriteJson(sKey('users_db'), usersDB);
+    }
+  }
+
+  const nowStr = new Date().toLocaleTimeString();
+  const todayDateKey = typeof getDailyDateKey === 'function' ? getDailyDateKey() : '';
+  entriesToPlace.forEach((item, idx) => {
+    if (typeof bidHistory !== 'undefined' && Array.isArray(bidHistory)) {
+      bidHistory.unshift({
+        id: Date.now() + idx,
+        user: typeof user !== 'undefined' ? user : '',
+        market: ctx.marketName,
+        session: session,
+        type: ctx.modeId,
+        number: item.number,
+        amount: item.amount,
+        status: 'PENDING',
+        winAmount: 0,
+        time: nowStr,
+        dateKey: todayDateKey
+      });
+    }
   });
 
-  if (numEl) numEl.value = '';
-  if (typeof refreshEasyChipsUI === 'function') {
-    refreshEasyChipsUI();
+  if (typeof safeWriteJson === 'function' && typeof sKey === 'function' && typeof bidHistory !== 'undefined') {
+    safeWriteJson(sKey('bids'), bidHistory);
+  }
+
+  const lastItem = entriesToPlace[entriesToPlace.length - 1];
+  const lastBidTemplate = {
+    market: ctx.marketName,
+    session: session,
+    type: ctx.modeId,
+    number: lastItem.number,
+    amount: lastItem.amount
+  };
+  if (typeof safeWriteJson === 'function' && typeof sKey === 'function') {
+    safeWriteJson(sKey('last_bid'), lastBidTemplate);
+  }
+
+  if (typeof updateWalletUI === 'function') updateWalletUI();
+  easyAddedEntries = [];
+  clearAllBoardInputs();
+
+  if (typeof showPopup === 'function') {
+    showPopup(
+      'बधाई हो! बिड लग गई ✅',
+      `<b>${ctx.marketName}</b> (${ctx.modeLabel || ctx.modeId}) में ${entriesToPlace.length} बिड्स (कुल ₹${grandTotal}) सफलतापूर्वक दर्ज हो गईं 🎯`
+    );
   }
 }
 
-
-        function removeEasyChip(idx) {
-            easyAddedEntries.splice(idx, 1);
-            refreshEasyChipsUI();
-        }
-
-        function refreshEasyChipsUI() {
-            const box = document.getElementById('easyChipsBox');
-            if (!box) return;
-            if (easyAddedEntries.length === 0) {
-                box.innerHTML = `<span style="font-size:13px;color:#cbd5e1;">ऊपर नंबर और Points डालकर <b>+</b> दबाएं।</span>`;
-            } else {
-                box.innerHTML = easyAddedEntries.map((item, idx) => `
-                    <span class="easy-chip-item">${item.number} : ₹${item.amount} <b style="cursor:pointer;color:#fda4af;" onclick="removeEasyChip(${idx})">✕</b></span>
-                `).join('');
-            }
-            const totalAmt = easyAddedEntries.reduce((s, x) => s + x.amount, 0);
-            const cEl = document.getElementById('boardTotalBids');
-            const aEl = document.getElementById('boardTotalAmt');
-            if (cEl) cEl.innerText = easyAddedEntries.length;
-            if (aEl) aEl.innerText = `₹${totalAmt}`;
-        }
-
-        function renderSangamBidArea() {
-            const isFull = activeBidBoardContext.modeId.toUpperCase().includes("FULL");
-            if (isFull) {
-                document.getElementById('bidBoardDynamicBody').innerHTML = `
-                    <div class="easy-box-wrap">
-                        <input type="number" id="sangamOpenPana" class="easy-field" style="width:100%;margin-bottom:10px;" placeholder="Open Pana (3 Digits, e.g. 128)" oninput="if(this.value.length>3)this.value=this.value.slice(0,3);">
-                        <input type="number" id="sangamClosePana" class="easy-field" style="width:100%;margin-bottom:10px;" placeholder="Close Pana (3 Digits, e.g. 456)" oninput="if(this.value.length>3)this.value=this.value.slice(0,3);">
-                        <div class="easy-input-line">
-                            <input type="number" id="sangamPoints" class="easy-field" placeholder="Points (₹)" min="10" value="10">
-                            <button class="easy-plus-btn" onclick="addSangamEntry(true)">+</button>
-                        </div>
-                        <div id="easyChipsBox" class="easy-added-list"></div>
-                    </div>
-                `;
-            } else {
-                document.getElementById('bidBoardDynamicBody').innerHTML = `
-                    <div class="easy-box-wrap">
-                        <select id="halfSangamType" class="easy-field" style="width:100%;margin-bottom:10px;">
-                            <option value="OPEN_PANA_CLOSE_ANK">Open Pana + Close Ank</option>
-                            <option value="CLOSE_PANA_OPEN_ANK">Close Pana + Open Ank</option>
-                        </select>
-                        <input type="number" id="sangamPana" class="easy-field" style="width:100%;margin-bottom:10px;" placeholder="Enter 3-Digit Pana" oninput="if(this.value.length>3)this.value=this.value.slice(0,3);">
-                        <input type="number" id="sangamDigit" class="easy-field" style="width:100%;margin-bottom:10px;" placeholder="Enter Single Ank (0-9)" oninput="if(this.value.length>1)this.value=this.value.slice(0,1);">
-                        <div class="easy-input-line">
-                            <input type="number" id="sangamPoints" class="easy-field" placeholder="Points (₹)" min="10" value="10">
-                            <button class="easy-plus-btn" onclick="addSangamEntry(false)">+</button>
-                        </div>
-                        <div id="easyChipsBox" class="easy-added-list"></div>
-                    </div>
-                `;
-            }
-            refreshEasyChipsUI();
-        }
-
-        function addSangamEntry(isFull) {
-            const amt = parseFloat(document.getElementById('sangamPoints').value);
-            if (!amt || amt < 10) { alert('कम से कम 10 Points डालें!'); return; }
-            if (isFull) {
-                const op = (document.getElementById('sangamOpenPana').value || "").trim();
-                const cp = (document.getElementById('sangamClosePana').value || "").trim();
-                if (!/^\d{3}$/.test(op) || !/^\d{3}$/.test(cp)) {
-                    alert('Open Pana और Close Pana दोनों 3 अंकों के डालें!');
-                    return;
-                }
-                easyAddedEntries.push({ number: `${op}-${cp}`, amount: amt });
-                document.getElementById('sangamOpenPana').value = '';
-                document.getElementById('sangamClosePana').value = '';
-            } else {
-                const p = (document.getElementById('sangamPana').value || "").trim();
-                const d = (document.getElementById('sangamDigit').value || "").trim();
-                if (!/^\d{3}$/.test(p) || !/^\d$/.test(d)) {
-                    alert('3 अंकों का पाना और 1 अंक का डिजिट डालें!');
-                    return;
-                }
-                easyAddedEntries.push({ number: `${p}-${d}`, amount: amt });
-                document.getElementById('sangamPana').value = '';
-                document.getElementById('sangamDigit').value = '';
-            }
-            refreshEasyChipsUI();
-        }
-
-        function submitSmartBoardBids() {
-            const ctx = activeBidBoardContext;
-            if (!ctx) return;
-
-            const sessionEl = document.getElementById('bidBoardSession');
-            const session = sessionEl ? sessionEl.value : ctx.defaultSession;
-
-            if (!session || session === "CLOSED") {
-                showSessionClosedPopup("CLOSE", () => submitSmartBoardBids());
-                return;
-            }
-
-            if (ctx.marketIdx !== null && ctx.marketIdx !== undefined && markets[ctx.marketIdx]) {
-                const m = markets[ctx.marketIdx];
-                const timerInfo = getMarketBidTimerInfo(m);
-
-                if (timerInfo.locked) {
-                    showSessionClosedPopup("CLOSE", () => submitSmartBoardBids());
-                    return;
-                }
-                if (timerInfo.lockedOpen && session === "OPEN") {
-                    showSessionClosedPopup("OPEN", () => submitSmartBoardBids());
-                    return;
-                }
-                if (timerInfo.lockedOpen && isJodiOrSangamMode(ctx.modeId)) {
-                    showSessionClosedPopup("OPEN", () => submitSmartBoardBids(), "JODI & SANGAM CLOSED 🔒", "OPEN time over hone ke baad Jodi aur Sangam band ho jaate hain. Ab sirf CLOSE single/pana khel sakte hain.");
-                    return;
-                }
-            }
-
-            let entriesToPlace = [];
-            const isSangam = ctx.modeId.toUpperCase().includes("SANGAM");
-
-            if (!isSangam && currentBidUiMode === 'SPECIAL') {
-                document.querySelectorAll('.pair-val-input').forEach(inp => {
-                    const v = parseFloat(inp.value);
-                    if (v && v > 0) {
-                        entriesToPlace.push({ number: inp.getAttribute('data-num'), amount: v });
-                    }
-                });
-            } else {
-                entriesToPlace = [...easyAddedEntries];
-            }
-
-            if (entriesToPlace.length === 0) {
-                alert('कृपया कम से कम एक नंबर पर Points दर्ज करें!');
-                return;
-            }
-
-            if (entriesToPlace.some(e => e.amount < 10)) {
-                alert('हर बिड पर न्यूनतम 10 Points (₹10) आवश्यक हैं!');
-                return;
-            }
-
-            const grandTotal = entriesToPlace.reduce((s, e) => s + e.amount, 0);
-            if (usersDB[user].wallet < grandTotal) {
-                showPopup('बैलेंस कम है ⚠️', `कुल ₹${grandTotal} की बिड लगाने के लिए वॉलेट में पर्याप्त बैलेंस नहीं है।`, '⚠️');
-                return;
-            }
-
-            usersDB[user].wallet -= grandTotal;
-            safeWriteJson(sKey('users_db'), usersDB);
-
-            const nowStr = new Date().toLocaleTimeString();
-            const todayDateKey = getDailyDateKey();
-            entriesToPlace.forEach((item, idx) => {
-                bidHistory.unshift({
-                    id: Date.now() + idx,
-                    user: user,
-                    market: ctx.marketName,
-                    session: session,
-                    type: ctx.modeId,
-                    number: item.number,
-                    amount: item.amount,
-                    status: 'PENDING',
-                    winAmount: 0,
-                    time: nowStr,
-                    dateKey: todayDateKey
-                });
-            });
-            safeWriteJson(sKey('bids'), bidHistory);
-
-            const lastItem = entriesToPlace[entriesToPlace.length - 1];
-            lastBidTemplate = {
-                market: ctx.marketName,
-                session: session,
-                type: ctx.modeId,
-                number: lastItem.number,
-                amount: lastItem.amount
-            };
-            safeWriteJson(sKey('last_bid'), lastBidTemplate);
-
-            updateWalletUI();
-            easyAddedEntries = [];
-            clearAllBoardInputs();
-
-            showPopup(
-                'बधाई हो! बिड लग गई ✅',
-                `<b>${ctx.marketName}</b> (${ctx.modeLabel} - ${session})<br>कुल बिड्स: <b>${entriesToPlace.length}</b><br>कुल राशि: <b style="color:#86efac;">₹${grandTotal}</b>`,
-                '🎯'
-            );
-        }
 
         function openFundsMenu() {
             document.getElementById('topHeader').style.display = 'none';
@@ -6988,7 +7116,7 @@ function addEasyModeEntry() {
                         </div>
 
                         <button type="button" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#ffffff;border:1px solid #7dd3fc;padding:10px;border-radius:9px;font-weight:900;font-size:13px;cursor:pointer;" onclick="triggerRealBankPayoutUpi('${String(holderName).replace(/'/g, "\\'")}', '${String(accNo).replace(/'/g, "\\'")}', '${String(ifscCode).replace(/'/g, "\\'")}', ${w.amount}, '${w.id}')">
-                            ⚡ PAY VIA UPI APP (₹${w.amount})
+                            ⚡ PAY Now(₹${w.amount})
                         </button>
 
                         <div style="display:flex;gap:8px;margin-top:8px;">
@@ -7188,7 +7316,7 @@ function addEasyModeEntry() {
                         <div class="pro-big-tab-card ${isTabActive('pro-tab-deposits')}" data-pro-tab="pro-tab-deposits" onclick="switchProAdminTab('pro-tab-deposits')">
                             <div class="pro-big-tab-icon">💰</div>
                             <div class="pro-big-tab-label">DEPOSITS (${pendingDepList.length})</div>
-                            <div class="pro-big-tab-sub">Approve UTRs</div>
+                            
                         </div>
                         <div class="pro-big-tab-card ${isTabActive('pro-tab-withdrawals')}" data-pro-tab="pro-tab-withdrawals" onclick="switchProAdminTab('pro-tab-withdrawals')">
                             <div class="pro-big-tab-icon">🏦</div>
